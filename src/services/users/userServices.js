@@ -33,7 +33,7 @@ class UserService {
     }
 
     static async getUserProfile(userId) {
-        console.log('Fetching profile for user ID:', userId);
+        console.log('Find profile for user ID:', userId);
         const userProfile = await User.findById(userId);
         if (!userProfile) throw new Error('User not found');
         return userProfile;

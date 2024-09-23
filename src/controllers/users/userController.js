@@ -26,9 +26,11 @@ const loginUser = async (req, res) => {
 const getUserProfile = async (req, res) => {
     try {
         const userId = req.user.id;
+        console.log('User ID from token:', userId);
         const userProfile = await userService.getUserProfile(userId);
         res.status(200).json(userProfile);
     } catch (error) {
+        console.error('Error find user profile:', error.message);
         res.status(404).json({ error: error.message });
     }
 };
@@ -36,6 +38,7 @@ const getUserProfile = async (req, res) => {
 const updateUserProfile = async (req, res) => {
     try {
         const userId = req.user.id;
+        console.log(">>> check req.body: ", req.body);
         const updatedUser = await userService.updateUserProfile(userId, req.body);
         res.status(200).json({ message: 'User profile updated successfully', user: updatedUser });
     } catch (error) {

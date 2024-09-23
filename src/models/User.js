@@ -7,7 +7,7 @@ class User {
         return { id: result.insertId, ...userData };
     }
 
-    //Fìn one by ID
+    //Find one by ID
     static async findById(userId) {
         const [rows] = await db.promise().query('SELECT * FROM users WHERE user_id = ?', [userId]);
         return rows[0];
